@@ -34,7 +34,7 @@ public class EmailService implements EmailSender
             helper.setSubject(content.getMessage());
              helper.setText(content.getMessage(), true);
             helper.setTo(content.getTo());
-            helper.setFrom(content.getFrom());
+            helper.setFrom("testserver@mail.com");
             javaMailSender.send(mimeMessage);
             log.info("Mail sent to "+content.getTo());
             return true;
