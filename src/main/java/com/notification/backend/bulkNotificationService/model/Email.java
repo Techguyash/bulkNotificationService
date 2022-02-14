@@ -1,4 +1,4 @@
-package com.notification.backend.bulkNotificationService.entity;
+package com.notification.backend.bulkNotificationService.model;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;

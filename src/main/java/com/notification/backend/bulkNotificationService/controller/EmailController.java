@@ -1,14 +1,17 @@
 package com.notification.backend.bulkNotificationService.controller;
 
 import com.notification.backend.bulkNotificationService.Service.EmailService;
-import com.notification.backend.bulkNotificationService.entity.Email;
+import com.notification.backend.bulkNotificationService.model.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@RestController(value = "/app/api")
-public class Controller
+@RestController()
+public class EmailController
 {
     @Autowired
     private EmailService emailService;
@@ -16,7 +19,7 @@ public class Controller
     @GetMapping("/status")
     public ResponseEntity<String> statusCheck()
     {
-        return new ResponseEntity<>("Up and running", HttpStatus.OK);
+        return new ResponseEntity<String>("Up and running", HttpStatus.OK);
     }
 
     @PostMapping("/mail")
@@ -32,4 +35,5 @@ public class Controller
             return new ResponseEntity("Send Successfully", HttpStatus.EXPECTATION_FAILED);
         }
     }
+
 }
