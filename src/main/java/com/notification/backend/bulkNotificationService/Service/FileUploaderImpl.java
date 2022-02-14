@@ -17,7 +17,7 @@ public class FileUploaderImpl implements FileUploader
     @Override
     public boolean getFileData(MultipartFile file) throws IOException
     {
-        List<String> strings = fileReader.readFileData(file.getInputStream());
+        List<String> mailList = fileReader.readFileData(file.getInputStream());
         return true;
     }
 }
