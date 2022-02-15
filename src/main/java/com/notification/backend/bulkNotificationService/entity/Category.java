@@ -15,10 +15,12 @@ public class Category
     @Id
     @GeneratedValue(generator = "seq_categoryId")
     private int CategoryId;
+    @Column(unique = true)
     private String categoryName;
     private String description;
     private LocalDate createdOn;
-    private long totalUsers;
+    private boolean active;
+
 
     @OneToMany(mappedBy = "category", cascade = {CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
     private List<MailRecords> mailRecords = new ArrayList<>();

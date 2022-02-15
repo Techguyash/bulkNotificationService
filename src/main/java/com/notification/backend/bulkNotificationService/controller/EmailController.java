@@ -1,7 +1,7 @@
 package com.notification.backend.bulkNotificationService.controller;
 
 import com.notification.backend.bulkNotificationService.Service.EmailService;
-import com.notification.backend.bulkNotificationService.model.Email;
+import com.notification.backend.bulkNotificationService.model.EmailDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,9 +23,9 @@ public class EmailController
     }
 
     @PostMapping("/mail")
-    public ResponseEntity emailRequest(@RequestBody Email content)
+    public ResponseEntity emailRequest(@RequestBody EmailDTO mailDto)
     {
-        boolean send = emailService.send(content);
+        boolean send = emailService.send(mailDto);
         if (send)
         {
             return new ResponseEntity(HttpStatus.OK);

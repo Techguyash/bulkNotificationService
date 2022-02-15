@@ -13,11 +13,22 @@ public class MailRecords
     @Id
     @GeneratedValue(generator ="seq_emailId")
     private int id;
-    private int email;
+
+    public MailRecords(String email, Category category)
+    {
+        this.email = email;
+        this.category = category;
+    }
+
+    private String email;
 
     @ManyToOne(cascade = {CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "category_id")
     private Category category;
 
 
+    public MailRecords()
+    {
+
+    }
 }

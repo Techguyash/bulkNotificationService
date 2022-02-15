@@ -1,14 +1,19 @@
 package com.notification.backend.bulkNotificationService.Service;
 
-import com.notification.backend.bulkNotificationService.model.Email;
+import com.notification.backend.bulkNotificationService.entity.Category;
+import com.notification.backend.bulkNotificationService.entity.MailRecords;
+import com.notification.backend.bulkNotificationService.model.EmailDTO;
+import com.notification.backend.bulkNotificationService.repo.CategoryRepo;
+import com.notification.backend.bulkNotificationService.repo.MailRecordRepo;
+import com.notification.backend.bulkNotificationService.util.EmailSender;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import javax.mail.internet.MimeMessage;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -16,24 +21,29 @@ import javax.mail.internet.MimeMessage;
 public class EmailServiceImpl implements EmailService
 {
 
+    @Autowired
+    MailRecordRepo mailRecordRepo;
 
-    private final JavaMailSender javaMailSender;
+    @Autowired
+    CategoryRepo categoryRepo;
+
+
 
     @Override
     @Async
-    public boolean send(Email content)
+    public boolean send(EmailDTO emailDTO)
     {
         try
         {
-            log.info("Request Received \n Initiating request for +"+content.getTo());
-            MimeMessage mimeMessage=javaMailSender.createMimeMessage();
-            MimeMessageHelper helper=new MimeMessageHelper(mimeMessage,"utf-8");
-            helper.setSubject(content.getMessage());
-             helper.setText(content.getMessage(), true);
-            helper.setTo(content.getTo());
-            helper.setFrom("testserver@mail.com");
-            javaMailSender.send(mimeMessage);
-            log.info("Mail sent to "+content.getTo());
+            Category bycategoryName = categoryRepo.findBycategoryName(emailDTO.getCategory());
+            List<MailRecords> allBycategory = mailRecordRepo.findAllBycategory(bycategoryName);
+            List<String> mailList = allBycategory.stream().map(mailRecords -> mailRecords.getEmail()).collect(
+                    Collectors.toList());
+            EmailSender sender=new EmailSender();
+            for(String mail:mailList)
+            {
+                    sender.send(mail,emailDTO.getSubject(),emailDTO.getMessage(),emailDTO.isHtmlContent());
+            }
             return true;
         }
         catch (Exception e)
@@ -41,8 +51,6 @@ public class EmailServiceImpl implements EmailService
             log.error("Failed  message :"+e.getLocalizedMessage());
             return false;
         }
-
-
 
 
     }

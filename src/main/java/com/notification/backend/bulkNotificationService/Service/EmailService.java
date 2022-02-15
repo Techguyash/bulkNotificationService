@@ -1,9 +1,9 @@
 package com.notification.backend.bulkNotificationService.Service;
 
-import com.notification.backend.bulkNotificationService.model.Email;
+import com.notification.backend.bulkNotificationService.model.EmailDTO;
 
 public interface EmailService
 {
 
-    boolean send(Email email);
+    boolean send(EmailDTO email);
 }
