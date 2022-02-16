@@ -18,11 +18,11 @@ public class FileController
     }
 
     @PostMapping("/upload")
-    public ResponseEntity uploadFile(@RequestParam(name = "file") MultipartFile file)
+    public ResponseEntity uploadFile(@RequestParam(name = "file") MultipartFile file,@RequestParam("category") String category)
     {
         try
         {
-            boolean fileData = fileHandler.getFileData(file);
+            boolean fileData = fileHandler.getFileData(file,category);
             if(fileData)
                 return new ResponseEntity("upload success", HttpStatus.OK);
             else

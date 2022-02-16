@@ -64,4 +64,9 @@ public class CategoryServiceImpl implements CategoryService
         return false;
 
     }
+
+    @Override
+    public Category getCategoryByName(String categoryName) throws Exception {
+        return categoryRepo.findBycategoryName(categoryName);
+    }
 }

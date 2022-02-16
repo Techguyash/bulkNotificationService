@@ -1,12 +1,12 @@
 package com.notification.backend.bulkNotificationService;
 
+import com.notification.backend.bulkNotificationService.Service.CategoryService;
 import com.notification.backend.bulkNotificationService.Service.EmailService;
+import com.notification.backend.bulkNotificationService.entity.Category;
+import com.notification.backend.bulkNotificationService.model.CategoryDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.time.Duration;
-import java.time.Instant;
 
 @SpringBootTest
 class BulkNotificationServiceApplicationTests {
@@ -15,20 +15,17 @@ class BulkNotificationServiceApplicationTests {
 	@Autowired
 	EmailService service;
 
-	@Test
-	void mailTest()
-	{
-		Instant start=Instant.now();
-		for(int i=1;i<=50;i++)
-		{
+	@Autowired
+	CategoryService categoryService;
 
-		
-		}
-		Instant end = Instant.now();
-		Duration between = Duration.between(start, end);
-		System.out.println("\n\n------------------------");
-		System.out.println("Time taken :"+between.toMillis() + "millie Seconds\n"
-		+"Time taken :"+between.toSeconds()+" seconds");
+	@Test
+	void CategoryCRUD()
+	{
+		//create category
+		CategoryDTO categoryDTO=new CategoryDTO("Category1","Test category",true);
+		Category returnCategory = categoryService.createCategory(categoryDTO);
+		//Category expectedCategory=new Category(1,"Category1","Test category", LocalDate.now(),true);
+		//Assertions.assertEquals(returnCategory,expectedCategory);
 	}
 
 
