@@ -12,5 +12,6 @@ public interface CategoryService
     List<Category> getAllCategory() throws Exception;
     Category updateCategory(Category category) throws Exception;
     boolean deleteCategory(int categoryId) throws Exception;
+    long categoryTotalCount() throws Exception;
 
 }

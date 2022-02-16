@@ -46,6 +46,7 @@ public class CategoryServiceImpl implements CategoryService
         if (category != null)
         {
             return categoryRepo.save(category);
+
         }
         else
         {
@@ -63,5 +64,11 @@ public class CategoryServiceImpl implements CategoryService
         }
         return false;
 
+    }
+
+    @Override
+    public long categoryTotalCount() throws Exception
+    {
+        return categoryRepo.count();
     }
 }

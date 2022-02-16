@@ -18,13 +18,14 @@ public class FileController
     }
 
     @PostMapping("/upload")
-    public ResponseEntity uploadFile(@RequestParam(name = "file") MultipartFile file)
+    public ResponseEntity uploadFile(@RequestParam(name = "file") MultipartFile file,@RequestParam("category") String category)
     {
         try
         {
-            boolean fileData = fileHandler.getFileData(file);
-            if(fileData)
-                return new ResponseEntity("upload success", HttpStatus.OK);
+
+            int uploadedCount = fileHandler.getFileData(file,category);
+            if(uploadedCount>0)
+                return new ResponseEntity(uploadedCount+" mails uploaded success", HttpStatus.OK);
             else
                 return new ResponseEntity("upload failed, please check logs", HttpStatus.INTERNAL_SERVER_ERROR);
 

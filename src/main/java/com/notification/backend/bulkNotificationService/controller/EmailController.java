@@ -25,10 +25,10 @@ public class EmailController
     @PostMapping("/mail")
     public ResponseEntity emailRequest(@RequestBody EmailDTO mailDto)
     {
-        boolean send = emailService.send(mailDto);
-        if (send)
+        int send = emailService.send(mailDto);
+        if (send>0)
         {
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity(send+" mails sent successfully",HttpStatus.OK);
         }
         else
         {

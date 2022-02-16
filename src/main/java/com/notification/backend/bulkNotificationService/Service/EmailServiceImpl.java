@@ -27,29 +27,37 @@ public class EmailServiceImpl implements EmailService
     @Autowired
     CategoryRepo categoryRepo;
 
+    @Autowired
+    EmailSender sender;
+
 
 
     @Override
     @Async
-    public boolean send(EmailDTO emailDTO)
+    public int send(EmailDTO emailDTO)
     {
+        int count=0;
         try
         {
+
             Category bycategoryName = categoryRepo.findBycategoryName(emailDTO.getCategory());
             List<MailRecords> allBycategory = mailRecordRepo.findAllBycategory(bycategoryName);
             List<String> mailList = allBycategory.stream().map(mailRecords -> mailRecords.getEmail()).collect(
                     Collectors.toList());
-            EmailSender sender=new EmailSender();
+//            EmailSender sender=new EmailSender();
             for(String mail:mailList)
             {
-                    sender.send(mail,emailDTO.getSubject(),emailDTO.getMessage(),emailDTO.isHtmlContent());
+                    if(sender.send(mail,emailDTO.getSubject(),emailDTO.getMessage(),emailDTO.isHtmlContent()))
+                    {
+                        count++;
+                    }
             }
-            return true;
+            return count;
         }
         catch (Exception e)
         {
             log.error("Failed  message :"+e.getLocalizedMessage());
-            return false;
+            return count;
         }
 
 

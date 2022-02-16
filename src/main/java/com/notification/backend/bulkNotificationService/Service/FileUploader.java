@@ -6,5 +6,5 @@ import java.io.IOException;
 
 public interface FileUploader
 {
-    boolean getFileData(MultipartFile file) throws IOException;
+    int getFileData(MultipartFile file,String category) throws IOException;
 }

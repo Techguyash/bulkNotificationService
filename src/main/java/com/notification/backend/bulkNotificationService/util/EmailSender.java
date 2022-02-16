@@ -1,24 +1,23 @@
 package com.notification.backend.bulkNotificationService.util;
 
+import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Component;
 
 import javax.mail.internet.MimeMessage;
 
 @Log
+@NoArgsConstructor
+@Component
 public class EmailSender
 {
-    public EmailSender()
-    {
-    }
 
-    private JavaMailSender javaMailSender;
 
-    public EmailSender(JavaMailSender javaMailSender)
-    {
-        this.javaMailSender = javaMailSender;
-    }
+    @Autowired
+    JavaMailSender javaMailSender;
 
 
     public boolean send(String to,String subject,String bodyContent,boolean isHtml)
@@ -39,8 +38,8 @@ public class EmailSender
         }
         catch (Exception e)
         {
-
-            return false;
+            e.printStackTrace();
+             return false;
         }
 
 

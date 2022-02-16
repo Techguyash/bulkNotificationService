@@ -1,9 +1,9 @@
 package com.notification.backend.bulkNotificationService.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 
 @Data
 public class CategoryDTO
@@ -12,7 +12,7 @@ public class CategoryDTO
      String categoryName;
      @NotNull(message = "category description must not be null")
      String description;
+     @JsonProperty()
      @NotNull(message = "category status must not be null")
      boolean active;
-     LocalDate createdOn;
 }
