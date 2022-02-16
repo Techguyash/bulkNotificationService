@@ -19,13 +19,10 @@ class BulkNotificationServiceApplicationTests {
 	void mailTest()
 	{
 		Instant start=Instant.now();
-		for(int i=1;i<=50;i++)
-		{
-
-		
-		}
-		Instant end = Instant.now();
+		Instant end=Instant.now();
 		Duration between = Duration.between(start, end);
+
+
 		System.out.println("\n\n------------------------");
 		System.out.println("Time taken :"+between.toMillis() + "millie Seconds\n"
 		+"Time taken :"+between.toSeconds()+" seconds");
