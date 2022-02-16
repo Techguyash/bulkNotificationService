@@ -1,6 +1,6 @@
 package com.notification.backend.bulkNotificationService;
 
-import com.notification.backend.bulkNotificationService.Service.EmailService;
+import com.notification.backend.bulkNotificationService.backend.Service.EmailService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
