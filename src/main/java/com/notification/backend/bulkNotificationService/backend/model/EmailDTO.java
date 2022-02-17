@@ -11,11 +11,10 @@ public class EmailDTO
 
     public EmailDTO() {
     }
-
-
     private String category;
     private String message;
     private String subject;
     @JsonProperty
     private boolean isHtmlContent;
+
 }

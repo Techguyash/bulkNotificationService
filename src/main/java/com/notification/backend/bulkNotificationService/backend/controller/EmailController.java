@@ -5,10 +5,8 @@ import com.notification.backend.bulkNotificationService.backend.model.EmailDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController()
 public class EmailController
@@ -32,8 +30,31 @@ public class EmailController
         }
         else
         {
-            return new ResponseEntity("Send Successfully", HttpStatus.EXPECTATION_FAILED);
+            return new ResponseEntity("failed", HttpStatus.EXPECTATION_FAILED);
         }
     }
+
+    @PostMapping("mail/attached")
+    public ResponseEntity emailWithAttachment(@RequestPart("data") EmailDTO mailDto,@RequestPart("file") MultipartFile file)
+    {
+
+        int send = 0;
+        try
+        {
+            send = emailService.sendWithAttachment(mailDto,file);
+            if (send>0)
+            {
+                return new ResponseEntity(send+" mails sent successfully",HttpStatus.OK);
+            }
+
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return new ResponseEntity("failed", HttpStatus.EXPECTATION_FAILED);
+    }
+
 
 }
