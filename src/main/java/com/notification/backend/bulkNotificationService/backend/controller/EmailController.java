@@ -1,7 +1,9 @@
 package com.notification.backend.bulkNotificationService.backend.controller;
 
 import com.notification.backend.bulkNotificationService.backend.Service.EmailService;
+import com.notification.backend.bulkNotificationService.backend.apiresponse.ResponseUtil;
 import com.notification.backend.bulkNotificationService.backend.model.EmailDTO;
+import com.notification.backend.bulkNotificationService.backend.rest.APIRestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,17 +23,23 @@ public class EmailController
     }
 
     @PostMapping("/mail")
-    public ResponseEntity emailRequest(@RequestBody EmailDTO mailDto)
+    public ResponseEntity<APIRestResponse> emailRequest(@RequestBody EmailDTO mailDto)
     {
-        int send = emailService.send(mailDto);
-        if (send>0)
+        APIRestResponse response=null;
+        try
         {
-            return new ResponseEntity(send+" mails sent successfully",HttpStatus.OK);
-        }
-        else
+            int send = emailService.send(mailDto);
+            response=new APIRestResponse();
+            if (send > 0)
+            {
+                    response.setData(send+" mail sent successfully");
+            }
+        }catch (Exception e)
         {
-            return new ResponseEntity("failed", HttpStatus.EXPECTATION_FAILED);
+            e.printStackTrace();
+            response= ResponseUtil.returnApiResponse(null,e.getMessage());
         }
+        return new ResponseEntity<>(response,response.getIsError()?HttpStatus.INTERNAL_SERVER_ERROR:HttpStatus.OK);
     }
 
     @PostMapping("mail/attached")

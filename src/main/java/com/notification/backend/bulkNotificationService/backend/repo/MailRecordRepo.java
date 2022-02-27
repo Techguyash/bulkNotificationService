@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface MailRecordRepo extends JpaRepository<MailRecords,Integer>
 {
-    List<MailRecords> findAllBycategory(Category category);
+    List<MailRecords> findAllBycategory( Category category);
 }

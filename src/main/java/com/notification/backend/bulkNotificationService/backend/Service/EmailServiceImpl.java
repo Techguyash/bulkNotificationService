@@ -16,9 +16,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+
 @AllArgsConstructor
 @Slf4j
+@Service
 public class EmailServiceImpl implements EmailService
 {
 
@@ -34,35 +35,24 @@ public class EmailServiceImpl implements EmailService
 
     @Override
     @Async
-    public int send(EmailDTO emailDTO)
+    public int send(EmailDTO emailDTO)  throws Exception
     {
         int count = 0;
-        try
-        {
             List<String> mailList = getMailList(emailDTO.getCategory());
-//            EmailSender sender=new EmailSender();
             for (String mail : mailList)
             {
-
                     if (sender.send(mail, emailDTO.getSubject(), emailDTO.getMessage(), emailDTO.isHtmlContent()))
                     {
                         count++;
                     }
             }
             return count;
-        }
-        catch (Exception e)
-        {
-            log.error("Failed  message :" + e.getLocalizedMessage());
-            return count;
-        }
     }
 
     public int sendWithAttachment(EmailDTO emailDTO, MultipartFile attachment) throws Exception
     {
         int count=0;
         List<String> mailList = getMailList(emailDTO.getCategory());
-//            EmailSender sender=new EmailSender();
         for (String mail : mailList)
         {
 

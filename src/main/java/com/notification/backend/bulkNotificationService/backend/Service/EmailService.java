@@ -6,6 +6,6 @@ import org.springframework.web.multipart.MultipartFile;
 public interface EmailService
 {
 
-    int send(EmailDTO email);
+    int send(EmailDTO email) throws Exception;
     public int sendWithAttachment(EmailDTO emailDTO, MultipartFile attachment) throws Exception;
 }

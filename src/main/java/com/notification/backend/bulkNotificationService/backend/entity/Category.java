@@ -4,8 +4,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Data
@@ -20,10 +18,4 @@ public class Category
     private String description;
     private LocalDate createdOn;
     private boolean active;
-
-
-    @OneToMany(mappedBy = "category", cascade = {CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
-    private List<MailRecords> mailRecords = new ArrayList<>();
-
-
 }

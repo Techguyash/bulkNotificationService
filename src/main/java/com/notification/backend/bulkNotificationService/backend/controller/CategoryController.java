@@ -1,8 +1,10 @@
 package com.notification.backend.bulkNotificationService.backend.controller;
 
 import com.notification.backend.bulkNotificationService.backend.Service.CategoryService;
+import com.notification.backend.bulkNotificationService.backend.apiresponse.ResponseUtil;
 import com.notification.backend.bulkNotificationService.backend.entity.Category;
 import com.notification.backend.bulkNotificationService.backend.model.CategoryDTO;
+import com.notification.backend.bulkNotificationService.backend.rest.APIRestResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +28,7 @@ public class CategoryController
         try
         {
             Category category = categoryService.createCategory(dto);
+
             return new ResponseEntity(category, HttpStatus.OK);
 
         }
@@ -52,18 +55,22 @@ public class CategoryController
     }
 
     @GetMapping("/all")
-    public ResponseEntity getAllCategory()
+    public ResponseEntity<APIRestResponse> getAllCategory()
     {
+        APIRestResponse response=null;
         try
         {
             List<Category> category = categoryService.getAllCategory();
-            return new ResponseEntity(category,HttpStatus.OK);
+            response=new APIRestResponse();
+            response.setData(category);
 
         }
         catch (Exception e)
         {
-            return new ResponseEntity(e.getMessage(),HttpStatus.BAD_REQUEST);
+           e.printStackTrace();
+           response=ResponseUtil.returnApiResponse(null,e.getMessage());
         }
+        return new ResponseEntity<>(response,response.getIsError() ? HttpStatus.INTERNAL_SERVER_ERROR:HttpStatus.OK);
 
     }
 
