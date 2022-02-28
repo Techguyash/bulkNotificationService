@@ -1,7 +1,7 @@
-package com.notification.backend.bulkNotificationService.backend.controller;
+package com.notification.backend.bulkNotificationService.controller;
 
 import com.notification.backend.bulkNotificationService.backend.Service.EmailService;
-import com.notification.backend.bulkNotificationService.backend.apiresponse.ResponseUtil;
+import com.notification.backend.bulkNotificationService.apiresponse.ResponseUtil;
 import com.notification.backend.bulkNotificationService.backend.model.EmailDTO;
 import com.notification.backend.bulkNotificationService.backend.rest.APIRestResponse;
 import org.springframework.beans.factory.annotation.Autowired;

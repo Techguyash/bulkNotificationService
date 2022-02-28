@@ -1,7 +1,7 @@
-package com.notification.backend.bulkNotificationService.backend.controller;
+package com.notification.backend.bulkNotificationService.controller;
 
 import com.notification.backend.bulkNotificationService.backend.Service.CategoryService;
-import com.notification.backend.bulkNotificationService.backend.apiresponse.ResponseUtil;
+import com.notification.backend.bulkNotificationService.apiresponse.ResponseUtil;
 import com.notification.backend.bulkNotificationService.backend.entity.Category;
 import com.notification.backend.bulkNotificationService.backend.model.CategoryDTO;
 import com.notification.backend.bulkNotificationService.backend.rest.APIRestResponse;

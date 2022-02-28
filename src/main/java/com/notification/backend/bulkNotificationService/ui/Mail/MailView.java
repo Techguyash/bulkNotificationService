@@ -1,4 +1,4 @@
-package com.notification.backend.bulkNotificationService.frontend.views.Mail;
+package com.notification.backend.bulkNotificationService.ui.Mail;
 
 
 import com.notification.backend.bulkNotificationService.backend.Service.CategoryService;
@@ -6,7 +6,7 @@ import com.notification.backend.bulkNotificationService.backend.Service.EmailSer
 import com.notification.backend.bulkNotificationService.backend.entity.Category;
 import com.notification.backend.bulkNotificationService.backend.model.EmailDTO;
 import com.notification.backend.bulkNotificationService.backend.rest.APIRestResponse;
-import com.notification.backend.bulkNotificationService.frontend.views.MainLayout;
+import com.notification.backend.bulkNotificationService.ui.MainLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.notification.Notification;
@@ -19,7 +19,7 @@ import com.vaadin.flow.router.Route;
 
 import java.util.List;
 
-@Route(value=MailView.ROUTE, layout=MainLayout.class)
+@Route(value=MailView.ROUTE, layout= MainLayout.class)
 public class MailView extends VerticalLayout implements BeforeEnterObserver
 {
 	public static final String ROUTE="mail";

@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 
@@ -39,6 +41,13 @@ public class EmailServiceImpl implements EmailService
     {
         int count = 0;
             List<String> mailList = getMailList(emailDTO.getCategory());
+            //--test code
+        ExecutorService executorService= Executors.newFixedThreadPool(6);
+
+
+           //-------
+
+
             for (String mail : mailList)
             {
                     if (sender.send(mail, emailDTO.getSubject(), emailDTO.getMessage(), emailDTO.isHtmlContent()))

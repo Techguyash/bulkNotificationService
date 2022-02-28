@@ -1,4 +1,4 @@
-package com.notification.backend.bulkNotificationService.frontend.views.Mail;
+package com.notification.backend.bulkNotificationService.ui.Mail;
 
 
 import org.springframework.beans.factory.annotation.Value;

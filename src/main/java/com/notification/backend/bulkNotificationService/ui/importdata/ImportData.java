@@ -1,7 +1,7 @@
-package com.notification.backend.bulkNotificationService.frontend.views.importData;
+package com.notification.backend.bulkNotificationService.ui.importdata;
 
 import com.notification.backend.bulkNotificationService.backend.Service.FileUploader;
-import com.notification.backend.bulkNotificationService.frontend.views.MainLayout;
+import com.notification.backend.bulkNotificationService.ui.MainLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H6;
 import com.vaadin.flow.component.notification.Notification;

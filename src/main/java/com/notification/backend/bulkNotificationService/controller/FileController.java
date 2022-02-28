@@ -1,4 +1,4 @@
-package com.notification.backend.bulkNotificationService.backend.controller;
+package com.notification.backend.bulkNotificationService.controller;
 
 import com.notification.backend.bulkNotificationService.backend.Service.FileUploader;
 import org.springframework.http.HttpStatus;

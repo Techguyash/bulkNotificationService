@@ -1,4 +1,4 @@
-package com.notification.backend.bulkNotificationService.backend.apiresponse;
+package com.notification.backend.bulkNotificationService.apiresponse;
 
 import com.notification.backend.bulkNotificationService.backend.rest.APIRestResponse;
 

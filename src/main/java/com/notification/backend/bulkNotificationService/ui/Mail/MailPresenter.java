@@ -1,4 +1,4 @@
-package com.notification.backend.bulkNotificationService.frontend.views.Mail;
+package com.notification.backend.bulkNotificationService.ui.Mail;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
