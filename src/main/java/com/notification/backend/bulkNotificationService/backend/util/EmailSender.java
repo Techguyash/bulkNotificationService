@@ -9,14 +9,24 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.internet.MimeMessage;
+import java.util.concurrent.Callable;
 
 @Log
 @NoArgsConstructor
 @Service
-public class EmailSender
+public class EmailSender implements Callable
 {
     @Autowired
     JavaMailSender javaMailSender;
+
+
+
+    @Override
+    public Object call() throws Exception
+    {
+        return null;
+    }
+
 
     public boolean send(String to,String subject,String bodyContent,boolean isHtml)
     {
@@ -60,4 +70,6 @@ public class EmailSender
             return false;
         }
     }
+
+
 }

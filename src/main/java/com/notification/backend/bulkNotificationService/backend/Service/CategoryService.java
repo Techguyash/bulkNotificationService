@@ -13,5 +13,6 @@ public interface CategoryService
     Category updateCategory(Category category) throws Exception;
     boolean deleteCategory(int categoryId) throws Exception;
     long categoryTotalCount() throws Exception;
+    Category findByName(String categoryName) throws Exception;
 
 }

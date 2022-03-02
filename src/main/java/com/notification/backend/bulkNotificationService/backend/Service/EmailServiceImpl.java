@@ -75,8 +75,8 @@ public class EmailServiceImpl implements EmailService
 
 
 
-
-    public List<String> getMailList(String category)
+    @Override
+    public List<String> getMailList(String category) throws Exception
     {
         Category categoryName = categoryRepo.findBycategoryName(category);
         List<MailRecords> allBycategory = mailRecordRepo.findAllBycategory(categoryName);

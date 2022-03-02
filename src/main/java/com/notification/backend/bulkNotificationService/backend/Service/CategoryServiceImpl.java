@@ -71,4 +71,10 @@ public class CategoryServiceImpl implements CategoryService
     {
         return categoryRepo.count();
     }
+
+    @Override
+    public Category findByName(String categoryName) throws Exception
+    {
+        return categoryRepo.findBycategoryName(categoryName);
+    }
 }
