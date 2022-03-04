@@ -17,7 +17,7 @@ import java.util.concurrent.Callable;
 public class EmailSender implements Callable
 {
     @Autowired
-    JavaMailSender javaMailSender;
+    JavaMailSender  javaMailSender;
 
 
 

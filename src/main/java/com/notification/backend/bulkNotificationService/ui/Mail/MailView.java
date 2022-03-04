@@ -22,7 +22,7 @@ import java.util.List;
 @Route(value=MailView.ROUTE, layout= MainLayout.class)
 public class MailView extends VerticalLayout implements BeforeEnterObserver
 {
-	public static final String ROUTE="mail";
+	public static final String ROUTE="ui/mail";
 	public static final String TITLE="Import Data";
 
 

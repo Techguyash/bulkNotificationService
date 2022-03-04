@@ -17,10 +17,10 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @Route(value = ImportData.ROUTE,layout = MainLayout.class)
-@RouteAlias(value = "",layout = MainLayout.class)
+@RouteAlias(value = "/",layout = MainLayout.class)
 public class ImportData extends VerticalLayout
 {
-    public  static final String ROUTE="importdata";
+    public  static final String ROUTE="ui/importdata";
     public static final String TITLE="Import Data";
 
     @Autowired

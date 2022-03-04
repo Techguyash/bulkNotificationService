@@ -1,13 +1,14 @@
 package com.notification.backend.bulkNotificationService.controller;
 
-import com.notification.backend.bulkNotificationService.backend.Service.CategoryService;
 import com.notification.backend.bulkNotificationService.apiresponse.ResponseUtil;
+import com.notification.backend.bulkNotificationService.backend.Service.CategoryService;
 import com.notification.backend.bulkNotificationService.backend.entity.Category;
 import com.notification.backend.bulkNotificationService.backend.model.CategoryDTO;
 import com.notification.backend.bulkNotificationService.backend.rest.APIRestResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,7 +39,7 @@ public class CategoryController
         }
     }
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getCategory(@RequestParam("id") int id)
     {
         try
@@ -54,7 +55,7 @@ public class CategoryController
 
     }
 
-    @GetMapping("/all")
+    @GetMapping(value = "/all",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<APIRestResponse> getAllCategory()
     {
         APIRestResponse response=null;
