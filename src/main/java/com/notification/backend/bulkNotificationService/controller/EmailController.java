@@ -63,6 +63,4 @@ public class EmailController
 
         return new ResponseEntity("failed", HttpStatus.EXPECTATION_FAILED);
     }
-
-
 }
