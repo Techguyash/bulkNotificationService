@@ -34,7 +34,6 @@ public class MailPresenter
 			{
 			});
 
-
 		}
 		catch (Exception e)
 		{

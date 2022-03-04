@@ -17,6 +17,8 @@
 	<properties>
 		<java.version>11</java.version>
 		<vaadin.version>22.0.5</vaadin.version>
+			<maven.compiler.source>11</maven.compiler.source>
+			<maven.compiler.target>11</maven.compiler.target>
 	</properties>
 
 	<repositories>
@@ -197,6 +199,12 @@
 				<configuration>
 					<proc>none</proc>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>3.0.3</version>
 			</plugin>
 
 			<!--
